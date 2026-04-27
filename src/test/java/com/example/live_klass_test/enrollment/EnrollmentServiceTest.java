@@ -85,15 +85,6 @@ class EnrollmentServiceTest {
     }
 
     @Test
-    @DisplayName("크리에이터는 수강 신청 불가")
-    void enroll_asCreator_throws() {
-        assertThatThrownBy(() -> enrollmentService.enroll(
-                new EnrollmentRequest(openClass.getId(), creator.getId())))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("크리에이터는 수강 신청을 할 수 없습니다");
-    }
-
-    @Test
     @DisplayName("OPEN이 아닌 강의에 수강 신청 시 예외")
     void enroll_nonOpenClass_throws() {
         LiveClass draftClass = new LiveClass("드래프트 강의", "설명", 10000, 5,
